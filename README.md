@@ -1,4 +1,5 @@
 # markup-calculator
+[![Build Status][travis-image]][travis-url]
 
 ## Quickstart
 

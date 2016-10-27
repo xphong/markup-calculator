@@ -55,6 +55,10 @@ describe('Markup Calculator', () => {
     expect(() => markupCalculator.calculateTotalMarkup(basePrice1, -1, 'food')).to.throw(Error, 'Invalid number of workers');
   });
 
+  it('should throw error on calculate total markup when invalid material type', () => {
+    expect(() => markupCalculator.calculateTotalMarkup(basePrice1, 3, {type: 'food'})).to.throw(Error, 'Invalid material type');
+  });
+
   it('should round to two decimals', () => {
     expect(markupCalculator.roundToTwoDecimals(markupCalculator.calculateFlatFee(basePrice1))).to.equal(65.00);
     expect(markupCalculator.roundToTwoDecimals(markupCalculator.calculateFlatFee(basePrice2))).to.equal(271.60);

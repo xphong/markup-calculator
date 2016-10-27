@@ -48,11 +48,11 @@ describe('Markup Calculator', () => {
   });
 
   it('should throw error on calculate total markup when invalid base price', () => {
-    expect(markupCalculator.calculateTotalMarkup(-100, 3, 'food')).to.throw(Error, 'Invalid base price');
+    expect(() => markupCalculator.calculateTotalMarkup(-100, 3, 'food')).to.throw(Error, 'Invalid base price');
   });
 
   it('should throw error on calculate total markup when invalid number of workers', () => {
-    expect(markupCalculator.calculateTotalMarkup(basePrice1, -1, 'food')).to.throw(Error, 'Invalid number of workers');
+    expect(() => markupCalculator.calculateTotalMarkup(basePrice1, -1, 'food')).to.throw(Error, 'Invalid number of workers');
   });
 
   it('should round to two decimals', () => {

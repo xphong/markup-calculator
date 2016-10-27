@@ -24,9 +24,19 @@ class MarkupCalculator {
   }
 
   calculateTotalMarkup(basePrice, numberOfWorkers, materialType) {
-    const flatPrice = basePrice + this.calculateFlatFee(basePrice);
+    let flatPrice, totalMarkup;
 
-    const totalMarkup = flatPrice
+    if (basePrice <= 0) {
+      throw new Error('Invalid base price');
+    }
+
+    if (numberOfWorkers <= 0) {
+      throw new Error('Invalid number of workers');
+    }
+
+    flatPrice = basePrice + this.calculateFlatFee(basePrice);
+
+    totalMarkup = flatPrice
       + this.calculateWorkerFee(flatPrice, numberOfWorkers)
       + this.calculateMaterialFee(flatPrice, materialType);
 

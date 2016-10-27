@@ -17,11 +17,8 @@ class MarkupCalculator {
       { type: 'food', fee: 0.13 },
       { type: 'electronics', fee: 0.02 }
     ];
-
-    let selectedMaterial, materialFee;
-
-    selectedMaterial = materialsList.filter(material => materialType === material.type);
-    materialFee = selectedMaterial[0] ? selectedMaterial[0].fee : '';
+    const selectedMaterial = materialsList.filter(material => materialType === material.type);
+    const materialFee = selectedMaterial[0] ? selectedMaterial[0].fee : '';
 
     return materialFee ? this.roundToTwoDecimals(flatPrice * materialFee) : 0;
   }

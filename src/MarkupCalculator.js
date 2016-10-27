@@ -1,9 +1,9 @@
 'use strict';
 
 class MarkupCalculator {
-  calculateFlatFee(markup) {
+  calculateFlatFee(basePrice) {
     const flatFee = 0.05;
-    return this.roundToTwoDecimals(markup * flatFee);
+    return this.roundToTwoDecimals(basePrice * flatFee);
   }
 
   calculateWorkerFee(flatPrice, numberOfWorkers) {
@@ -26,9 +26,9 @@ class MarkupCalculator {
     return materialFee ? this.roundToTwoDecimals(flatPrice * materialFee) : 0;
   }
 
-  calculateTotalMarkup(markup, numberOfWorkers, materialType) {
-    const totalFlatFee = this.calculateFlatFee(markup);
-    const flatPrice = markup + totalFlatFee;
+  calculateTotalMarkup(basePrice, numberOfWorkers, materialType) {
+    const totalFlatFee = this.calculateFlatFee(basePrice);
+    const flatPrice = basePrice + totalFlatFee;
 
     const totalMarkup = flatPrice
       + this.calculateWorkerFee(flatPrice, numberOfWorkers)

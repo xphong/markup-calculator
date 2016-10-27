@@ -1,6 +1,5 @@
 # markup-calculator
-[![Build Status][travis-image]][travis-url]
-
+[![Build Status](https://travis-ci.org/xphong/markup-calculator.svg?branch=master)](https://travis-ci.org/xphong/markup-calculator)
 ## Quickstart
 
 ### Versions

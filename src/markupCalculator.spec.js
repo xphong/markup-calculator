@@ -21,13 +21,24 @@ describe('Markup Calculator', () => {
   });
 
   it('should calculate worker fee', () => {
-    let flatFee1 = basePrice1 + markupCalculator.calculateFlatFee(basePrice1);
-    let flatFee2 = basePrice2 + markupCalculator.calculateFlatFee(basePrice2);
-    let flatFee3 = basePrice3 + markupCalculator.calculateFlatFee(basePrice3);
+    let flatPrice1 = basePrice1 + markupCalculator.calculateFlatFee(basePrice1);
+    let flatPrice2 = basePrice2 + markupCalculator.calculateFlatFee(basePrice2);
+    let flatPrice3 = basePrice3 + markupCalculator.calculateFlatFee(basePrice3);
 
-    expect(markupCalculator.calculateWorkerFee(flatFee1, 3)).to.equal(49.14);
-    expect(markupCalculator.calculateWorkerFee(flatFee2, 1)).to.equal(68.44);
-    expect(markupCalculator.calculateWorkerFee(flatFee3, 4)).to.equal(627.83);
+    expect(markupCalculator.calculateWorkerFee(flatPrice1, 3)).to.equal(49.14);
+    expect(markupCalculator.calculateWorkerFee(flatPrice2, 1)).to.equal(68.44);
+    expect(markupCalculator.calculateWorkerFee(flatPrice3, 4)).to.equal(627.83);
+  });
+
+  it('should calculate material fee', () => {
+    let flatPrice1 = basePrice1 + markupCalculator.calculateFlatFee(basePrice1);
+    let flatPrice2 = basePrice2 + markupCalculator.calculateFlatFee(basePrice2);
+    let flatPrice3 = basePrice3 + markupCalculator.calculateFlatFee(basePrice3);
+
+    expect(markupCalculator.calculateMaterialFee(flatPrice1, 'food')).to.equal(177.45);
+    expect(markupCalculator.calculateMaterialFee(flatPrice2, 'drugs')).to.equal(427.77);
+    expect(markupCalculator.calculateMaterialFee(flatPrice3, 'books')).to.equal(13079.80);
+    expect(markupCalculator.calculateMaterialFee(flatPrice1, 'electronics')).to.equal(27.30);
   });
 
   it('should round to two decimals', () => {

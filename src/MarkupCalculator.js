@@ -12,23 +12,18 @@ class MarkupCalculator {
   }
 
   calculateMaterialFee(flatFee, materialType) {
-    const drugsFee = 0.075;
-    const foodFee = 0.13;
-    const electronicsFee = 0.02;
+    const materialsList = [
+      { type: 'drugs', fee: 0.075 },
+      { type: 'food', fee: 0.13 },
+      { type: 'electronics', fee: 0.02 }
+    ];
 
-    let materialFee;
+    let selectedMaterial, materialFee;
 
-    if (materialType === 'drugs') {
-      materialFee = drugsFee;
-    } else if (materialType === 'food') {
-      materialFee = foodFee;
-    } else if (materialType === 'electronics') {
-      materialFee = electronicsFee;
-    } else {
-      materialFee = 0;
-    }
+    selectedMaterial = materialsList.filter(material => materialType === material.type);
+    materialFee = selectedMaterial[0] ? selectedMaterial[0].fee : '';
 
-    return materialFee === 0 ? this.roundToTwoDecimals(flatFee) : this.roundToTwoDecimals(flatFee * materialFee);
+    return materialFee ? this.roundToTwoDecimals(flatFee * materialFee) : this.roundToTwoDecimals(flatFee);
   }
 
   roundToTwoDecimals(num) {

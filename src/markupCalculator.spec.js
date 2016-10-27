@@ -37,7 +37,7 @@ describe('Markup Calculator', () => {
 
     expect(markupCalculator.calculateMaterialFee(flatPrice1, 'food')).to.equal(177.45);
     expect(markupCalculator.calculateMaterialFee(flatPrice2, 'drugs')).to.equal(427.77);
-    expect(markupCalculator.calculateMaterialFee(flatPrice3, 'books')).to.equal(13079.80);
+    expect(markupCalculator.calculateMaterialFee(flatPrice3, 'books')).to.equal(0);
     expect(markupCalculator.calculateMaterialFee(flatPrice1, 'electronics')).to.equal(27.30);
   });
 

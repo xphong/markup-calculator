@@ -6,12 +6,12 @@ class MarkupCalculator {
     return this.roundToTwoDecimals(markup * flatFee);
   }
 
-  calculateWorkerFee(flatFee, numberOfWorkers) {
+  calculateWorkerFee(flatPrice, numberOfWorkers) {
     const workerFee = 0.012;
-    return this.roundToTwoDecimals(flatFee * (workerFee * numberOfWorkers));
+    return this.roundToTwoDecimals(flatPrice * (workerFee * numberOfWorkers));
   }
 
-  calculateMaterialFee(flatFee, materialType) {
+  calculateMaterialFee(flatPrice, materialType) {
     const materialsList = [
       { type: 'drugs', fee: 0.075 },
       { type: 'food', fee: 0.13 },
@@ -23,7 +23,18 @@ class MarkupCalculator {
     selectedMaterial = materialsList.filter(material => materialType === material.type);
     materialFee = selectedMaterial[0] ? selectedMaterial[0].fee : '';
 
-    return materialFee ? this.roundToTwoDecimals(flatFee * materialFee) : this.roundToTwoDecimals(flatFee);
+    return materialFee ? this.roundToTwoDecimals(flatPrice * materialFee) : 0;
+  }
+
+  calculateTotalMarkup(markup, numberOfWorkers, materialType) {
+    const totalFlatFee = this.calculateFlatFee(markup);
+    const flatPrice = markup + totalFlatFee;
+
+    const totalMarkup = flatPrice
+      + this.calculateWorkerFee(flatPrice, numberOfWorkers)
+      + this.calculateMaterialFee(flatPrice, materialType);
+
+    return this.roundToTwoDecimals(totalMarkup);
   }
 
   roundToTwoDecimals(num) {

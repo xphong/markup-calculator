@@ -34,6 +34,10 @@ class MarkupCalculator {
       throw new Error('Invalid number of workers');
     }
 
+    if (typeof materialType !== 'string') {
+      throw new Error('Invalid material type');
+    }
+
     flatPrice = basePrice + this.calculateFlatFee(basePrice);
 
     totalMarkup = flatPrice

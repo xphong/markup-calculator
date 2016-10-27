@@ -41,6 +41,12 @@ describe('Markup Calculator', () => {
     expect(markupCalculator.calculateMaterialFee(flatPrice1, 'electronics')).to.equal(27.30);
   });
 
+  it('should calculate total markup', () => {
+    expect(markupCalculator.calculateTotalMarkup(basePrice1, 3, 'food')).to.equal(1591.58);
+    expect(markupCalculator.calculateTotalMarkup(basePrice2, 1, 'drugs')).to.equal(6199.81);
+    expect(markupCalculator.calculateTotalMarkup(basePrice3, 4, 'books')).to.equal(13707.63);
+  });
+
   it('should round to two decimals', () => {
     expect(markupCalculator.roundToTwoDecimals(markupCalculator.calculateFlatFee(basePrice1))).to.equal(65.00);
     expect(markupCalculator.roundToTwoDecimals(markupCalculator.calculateFlatFee(basePrice2))).to.equal(271.60);

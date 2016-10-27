@@ -30,4 +30,9 @@ describe('Markup Calculator', () => {
     expect(markupCalculator.calculateWorkerFee(flatFee3, 4)).to.equal(627.83);
   });
 
+  it('should round to two decimals', () => {
+    expect(markupCalculator.roundToTwoDecimals(markupCalculator.calculateFlatFee(basePrice1))).to.equal(65.00);
+    expect(markupCalculator.roundToTwoDecimals(markupCalculator.calculateFlatFee(basePrice2))).to.equal(271.60);
+    expect(markupCalculator.roundToTwoDecimals(markupCalculator.calculateFlatFee(basePrice3))).to.equal(622.85);
+  });
 });

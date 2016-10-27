@@ -24,8 +24,7 @@ class MarkupCalculator {
   }
 
   calculateTotalMarkup(basePrice, numberOfWorkers, materialType) {
-    const totalFlatFee = this.calculateFlatFee(basePrice);
-    const flatPrice = basePrice + totalFlatFee;
+    const flatPrice = basePrice + this.calculateFlatFee(basePrice);
 
     const totalMarkup = flatPrice
       + this.calculateWorkerFee(flatPrice, numberOfWorkers)

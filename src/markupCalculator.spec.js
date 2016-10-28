@@ -60,8 +60,8 @@ describe('Markup Calculator', () => {
   });
 
   it('should round to two decimals', () => {
-    expect(markupCalculator.roundToTwoDecimals(markupCalculator.calculateFlatFee(basePrice1))).to.equal(65.00);
-    expect(markupCalculator.roundToTwoDecimals(markupCalculator.calculateFlatFee(basePrice2))).to.equal(271.60);
-    expect(markupCalculator.roundToTwoDecimals(markupCalculator.calculateFlatFee(basePrice3))).to.equal(622.85);
+    expect(markupCalculator.roundToTwoDecimals(64.999)).to.equal(65.00);
+    expect(markupCalculator.roundToTwoDecimals(271.60123)).to.equal(271.60);
+    expect(markupCalculator.roundToTwoDecimals(622.8475)).to.equal(622.85);
   });
 });

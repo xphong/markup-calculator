@@ -15,9 +15,9 @@ describe('Markup Calculator', () => {
   });
 
   it('should calculate flat markup fee', () => {
-    expect(markupCalculator.calculateFlatFee(basePrice1)).to.equal(65.00);
+    expect(markupCalculator.calculateFlatFee(basePrice1)).to.equal(64.9995);
     expect(markupCalculator.calculateFlatFee(basePrice2)).to.equal(271.60);
-    expect(markupCalculator.calculateFlatFee(basePrice3)).to.equal(622.85);
+    expect(markupCalculator.calculateFlatFee(basePrice3)).to.equal(622.8475000000001);
   });
 
   it('should calculate worker fee', () => {
@@ -25,9 +25,9 @@ describe('Markup Calculator', () => {
     let flatPrice2 = basePrice2 + markupCalculator.calculateFlatFee(basePrice2);
     let flatPrice3 = basePrice3 + markupCalculator.calculateFlatFee(basePrice3);
 
-    expect(markupCalculator.calculateWorkerFee(flatPrice1, 3)).to.equal(49.14);
-    expect(markupCalculator.calculateWorkerFee(flatPrice2, 1)).to.equal(68.44);
-    expect(markupCalculator.calculateWorkerFee(flatPrice3, 4)).to.equal(627.83);
+    expect(markupCalculator.calculateWorkerFee(flatPrice1, 3)).to.equal(49.139622);
+    expect(markupCalculator.calculateWorkerFee(flatPrice2, 1)).to.equal(68.4432);
+    expect(markupCalculator.calculateWorkerFee(flatPrice3, 4)).to.equal(627.83028);
   });
 
   it('should calculate material fee', () => {
@@ -35,10 +35,10 @@ describe('Markup Calculator', () => {
     let flatPrice2 = basePrice2 + markupCalculator.calculateFlatFee(basePrice2);
     let flatPrice3 = basePrice3 + markupCalculator.calculateFlatFee(basePrice3);
 
-    expect(markupCalculator.calculateMaterialFee(flatPrice1, 'food')).to.equal(177.45);
-    expect(markupCalculator.calculateMaterialFee(flatPrice2, 'drugs')).to.equal(427.77);
+    expect(markupCalculator.calculateMaterialFee(flatPrice1, 'food')).to.equal(177.448635);
+    expect(markupCalculator.calculateMaterialFee(flatPrice2, 'drugs')).to.equal(427.77000000000004);
     expect(markupCalculator.calculateMaterialFee(flatPrice3, 'books')).to.equal(0);
-    expect(markupCalculator.calculateMaterialFee(flatPrice1, 'electronics')).to.equal(27.30);
+    expect(markupCalculator.calculateMaterialFee(flatPrice1, 'electronics')).to.equal(27.299789999999998);
   });
 
   it('should calculate total markup', () => {

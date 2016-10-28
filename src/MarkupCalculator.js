@@ -1,17 +1,17 @@
 'use strict';
 
 class MarkupCalculator {
-  calculateFlatFee(basePrice) {
+  calculateFlatFee(price) {
     const flatFee = 0.05;
-    return this.roundToTwoDecimals(basePrice * flatFee);
+    return price * flatFee;
   }
 
-  calculateWorkerFee(flatPrice, numberOfWorkers) {
+  calculateWorkerFee(price, numberOfWorkers) {
     const workerFee = 0.012;
-    return this.roundToTwoDecimals(flatPrice * (workerFee * numberOfWorkers));
+    return price * (workerFee * numberOfWorkers);
   }
 
-  calculateMaterialFee(flatPrice, materialType) {
+  calculateMaterialFee(price, materialType) {
     const materialsList = [
       { type: 'drugs', fee: 0.075 },
       { type: 'food', fee: 0.13 },
@@ -20,7 +20,7 @@ class MarkupCalculator {
     const selectedMaterial = materialsList.filter(material => materialType === material.type);
     const materialFee = selectedMaterial[0] ? selectedMaterial[0].fee : '';
 
-    return materialFee ? this.roundToTwoDecimals(flatPrice * materialFee) : 0;
+    return materialFee ? price * materialFee : 0;
   }
 
   calculateTotalMarkup(basePrice, numberOfWorkers, materialType) {

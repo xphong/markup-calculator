@@ -26,17 +26,7 @@ class MarkupCalculator {
   calculateTotalMarkup(basePrice, numberOfWorkers, materialType) {
     let flatPrice, totalMarkup;
 
-    if (basePrice <= 0) {
-      throw new Error('Invalid base price');
-    }
-
-    if (numberOfWorkers <= 0) {
-      throw new Error('Invalid number of workers');
-    }
-
-    if (typeof materialType !== 'string') {
-      throw new Error('Invalid material type');
-    }
+    this.handleValidationErrors(basePrice, numberOfWorkers, materialType)
 
     flatPrice = basePrice + this.calculateFlatFee(basePrice);
 
@@ -49,6 +39,20 @@ class MarkupCalculator {
 
   roundToTwoDecimals(num) {
     return Math.round(num * 100) / 100;
+  }
+
+  handleValidationErrors(basePrice, numberOfWorkers, materialType) {
+    if (basePrice <= 0) {
+      throw new Error('Invalid base price');
+    }
+
+    if (numberOfWorkers <= 0) {
+      throw new Error('Invalid number of workers');
+    }
+
+    if (typeof materialType !== 'string') {
+      throw new Error('Invalid material type');
+    }
   }
 }
 

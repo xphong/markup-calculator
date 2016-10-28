@@ -47,16 +47,16 @@ describe('Markup Calculator', () => {
     expect(markupCalculator.calculateTotalMarkup(basePrice3, 4, 'books')).to.equal(13707.63);
   });
 
-  it('should throw error on calculate total markup when invalid base price', () => {
-    expect(() => markupCalculator.calculateTotalMarkup(-100, 3, 'food')).to.throw(Error, 'Invalid base price');
+  it('should throw error on handle validation errors when invalid base price', () => {
+    expect(() => markupCalculator.handleValidationErrors(-100, 3, 'food')).to.throw(Error, 'Invalid base price');
   });
 
-  it('should throw error on calculate total markup when invalid number of workers', () => {
-    expect(() => markupCalculator.calculateTotalMarkup(basePrice1, -1, 'food')).to.throw(Error, 'Invalid number of workers');
+  it('should throw error on handle validation errors when invalid number of workers', () => {
+    expect(() => markupCalculator.handleValidationErrors(basePrice1, -1, 'food')).to.throw(Error, 'Invalid number of workers');
   });
 
-  it('should throw error on calculate total markup when invalid material type', () => {
-    expect(() => markupCalculator.calculateTotalMarkup(basePrice1, 3, {type: 'food'})).to.throw(Error, 'Invalid material type');
+  it('should throw error on handle validation errors when invalid material type', () => {
+    expect(() => markupCalculator.handleValidationErrors(basePrice1, 3, {type: 'food'})).to.throw(Error, 'Invalid material type');
   });
 
   it('should round to two decimals', () => {

@@ -24,17 +24,25 @@ class MarkupCalculator {
   }
 
   calculateTotalMarkup(basePrice, numberOfWorkers, materialType) {
+    const { 
+      handleValidationErrors,
+      calculateFlatFee,
+      calculateWorkerFee,
+      calculateMaterialFee,
+      roundToTwoDecimals
+    } = this;
+
     let flatPrice, totalMarkup;
 
-    this.handleValidationErrors(basePrice, numberOfWorkers, materialType)
+    handleValidationErrors(basePrice, numberOfWorkers, materialType)
 
-    flatPrice = basePrice + this.calculateFlatFee(basePrice);
+    flatPrice = basePrice + calculateFlatFee(basePrice);
 
     totalMarkup = flatPrice
-      + this.calculateWorkerFee(flatPrice, numberOfWorkers)
-      + this.calculateMaterialFee(flatPrice, materialType);
+      + calculateWorkerFee(flatPrice, numberOfWorkers)
+      + calculateMaterialFee(flatPrice, materialType);
 
-    return this.roundToTwoDecimals(totalMarkup);
+    return roundToTwoDecimals(totalMarkup);
   }
 
   roundToTwoDecimals(num) {

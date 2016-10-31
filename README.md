@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/xphong/markup-calculator.svg?branch=master)](https://travis-ci.org/xphong/markup-calculator)
 
 ## Versions
-Node `v5.6.0`
+Node `v7.0.0`
 
 Npm `v3.6.0`
 

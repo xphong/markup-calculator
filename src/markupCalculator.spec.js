@@ -21,24 +21,16 @@ describe('Markup Calculator', () => {
   });
 
   it('should calculate worker fee', () => {
-    let flatPrice1 = basePrice1 + markupCalculator.calculateFlatFee(basePrice1);
-    let flatPrice2 = basePrice2 + markupCalculator.calculateFlatFee(basePrice2);
-    let flatPrice3 = basePrice3 + markupCalculator.calculateFlatFee(basePrice3);
-
-    expect(markupCalculator.calculateWorkerFee(flatPrice1, 3)).to.equal(49.139622);
-    expect(markupCalculator.calculateWorkerFee(flatPrice2, 1)).to.equal(68.4432);
-    expect(markupCalculator.calculateWorkerFee(flatPrice3, 4)).to.equal(627.83028);
+    expect(markupCalculator.calculateWorkerFee(1364.9895, 3)).to.equal(49.139622);
+    expect(markupCalculator.calculateWorkerFee(5703.60, 1)).to.equal(68.4432);
+    expect(markupCalculator.calculateWorkerFee(13079.7975000000001, 4)).to.equal(627.83028);
   });
 
   it('should calculate material fee', () => {
-    let flatPrice1 = basePrice1 + markupCalculator.calculateFlatFee(basePrice1);
-    let flatPrice2 = basePrice2 + markupCalculator.calculateFlatFee(basePrice2);
-    let flatPrice3 = basePrice3 + markupCalculator.calculateFlatFee(basePrice3);
-
-    expect(markupCalculator.calculateMaterialFee(flatPrice1, 'food')).to.equal(177.448635);
-    expect(markupCalculator.calculateMaterialFee(flatPrice2, 'drugs')).to.equal(427.77000000000004);
-    expect(markupCalculator.calculateMaterialFee(flatPrice3, 'books')).to.equal(0);
-    expect(markupCalculator.calculateMaterialFee(flatPrice1, 'electronics')).to.equal(27.299789999999998);
+    expect(markupCalculator.calculateMaterialFee(1364.9895, 'food')).to.equal(177.448635);
+    expect(markupCalculator.calculateMaterialFee(5703.60, 'drugs')).to.equal(427.77000000000004);
+    expect(markupCalculator.calculateMaterialFee(13079.7975000000001, 'books')).to.equal(0);
+    expect(markupCalculator.calculateMaterialFee(1364.9895, 'electronics')).to.equal(27.299789999999998);
   });
 
   it('should calculate total markup', () => {
